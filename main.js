@@ -173,29 +173,36 @@ function viewLists()
 {
     // Create Movie List
     let favMovies = localStorage.getItem(userMovieListKey); // list of movies in a string
-    favMovies = JSON.parse(favMovies);  // change string into array
-    let movieString = `<p>Here are your favorite movies!</p>`;
-
-    // Build HTML
-    for(let i = 0; i < favMovies.length; i++)
+    if(favMovies != "") // check if empty
     {
-        let movie = `<div class="favMovie">${favMovies[i]}<button type="button" value="${favMovies[i]}" onclick="removeMovieFromList(this.value)">Remove from List</button></div>`;
-        movieString += movie;
+        favMovies = JSON.parse(favMovies);  // change string into array
+        let movieString = `<p>Here are your favorite movies!</p>`;
+
+        // Build HTML
+        for(let i = 0; i < favMovies.length; i++)
+        {
+            let movie = `<div class="favMovie">${favMovies[i]}<button type="button" value="${favMovies[i]}" onclick="removeMovieFromList(this.value)">Remove from List</button></div>`;
+            movieString += movie;
+        }
+
+        document.querySelector("#favMovies").innerHTML = movieString;
     }
-
-    document.querySelector("#favMovies").innerHTML = movieString;
-
+    
     // Create Pokemon List
     let favPokemons = localStorage.getItem(userPokemonListKey); // list of movies in a string
-    favPokemons = JSON.parse(favPokemons);  // change string into array
-    let pokemonString = `<p>Here are your favorite Pokemon!</p>`;
-
-    // Build HTML
-    for(let i = 0; i < favPokemons.length; i++)
+    if(favPokemons != "")   // check if empty
     {
-        let pokemon = `<div class="favPokemon">${favPokemons[i]}<button type="button" value="${favPokemons[i]}" onclick="removePokemonFromList(this.value)">Remove from List</button></div>`;
-        pokemonString += pokemon;
-    }
+        favPokemons = JSON.parse(favPokemons);  // change string into array
 
-    document.querySelector("#favPokemons").innerHTML = pokemonString;
+        let pokemonString = `<p>Here are your favorite Pokemon!</p>`;
+
+        // Build HTML
+        for(let i = 0; i < favPokemons.length; i++)
+        {
+            let pokemon = `<div class="favPokemon">${favPokemons[i]}<button type="button" value="${favPokemons[i]}" onclick="removePokemonFromList(this.value)">Remove from List</button></div>`;
+            pokemonString += pokemon;
+        }
+
+        document.querySelector("#favPokemons").innerHTML = pokemonString;
+    }
 }
