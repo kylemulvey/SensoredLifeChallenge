@@ -1,4 +1,4 @@
-localStorage.clear();
+//localStorage.clear(); // only for testing
 const userNameBox = document.querySelector("#userNameBox");
 const passWordBox = document.querySelector("#passWordBox");
 
